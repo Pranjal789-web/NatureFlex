@@ -1,0 +1,978 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: #f3f8f1;
+    color: #183b25;
+}
+
+button {
+    cursor: pointer;
+}
+
+
+/* =====================================================
+   LOGIN / SIGNUP
+===================================================== */
+
+#authPage {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    background:
+        linear-gradient(
+            rgba(8, 58, 30, 0.65),
+            rgba(7, 70, 35, 0.75)
+        ),
+        url("https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1600&q=80");
+
+    background-size: cover;
+    background-position: center;
+}
+
+
+.auth-box {
+    width: 400px;
+    max-width: 100%;
+
+    padding: 35px;
+
+    background: rgba(255,255,255,0.95);
+
+    border-radius: 25px;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,0.3);
+}
+
+
+/* =====================================================
+   LOGO
+===================================================== */
+
+.logo {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.logo-icon {
+    font-size: 55px;
+}
+
+.logo h1 {
+    color: #1c7430;
+    font-size: 34px;
+}
+
+.logo p {
+    color: #66806d;
+    margin-top: 5px;
+}
+
+
+/* =====================================================
+   AUTH TABS
+===================================================== */
+
+.tabs {
+    display: flex;
+
+    margin-bottom: 25px;
+
+    background: #eaf4e8;
+
+    border-radius: 12px;
+
+    padding: 5px;
+}
+
+.tabs button {
+    width: 50%;
+
+    border: none;
+
+    background: transparent;
+
+    padding: 12px;
+
+    border-radius: 9px;
+
+    font-weight: bold;
+
+    color: #397348;
+}
+
+.tabs button.active {
+    background: #238636;
+    color: white;
+}
+
+
+/* =====================================================
+   INPUTS
+===================================================== */
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    margin-bottom: 7px;
+
+    color: #315d3c;
+}
+
+.input-group input,
+.input-group select {
+
+    width: 100%;
+
+    padding: 13px;
+
+    border: 1px solid #c8ddc9;
+
+    border-radius: 10px;
+
+    outline: none;
+
+    font-size: 15px;
+}
+
+.input-group input:focus {
+
+    border-color: #239a43;
+
+    box-shadow:
+        0 0 0 3px rgba(35,154,67,0.1);
+}
+
+
+/* =====================================================
+   BUTTON
+===================================================== */
+
+.primary-btn {
+
+    width: 100%;
+
+    border: none;
+
+    padding: 14px;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #1f8f3a,
+            #65b741
+        );
+
+    color: white;
+
+    font-weight: bold;
+
+    font-size: 16px;
+
+    margin-top: 10px;
+
+    transition: .2s;
+}
+
+.primary-btn:hover {
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 8px 20px rgba(31,143,58,0.3);
+}
+
+
+.auth-message {
+
+    text-align: center;
+
+    margin-top: 15px;
+
+    font-size: 13px;
+}
+
+
+/* =====================================================
+   MAIN APP
+===================================================== */
+
+#app {
+    display: none;
+    min-height: 100vh;
+}
+
+
+/* =====================================================
+   NAVBAR
+===================================================== */
+
+.navbar {
+
+    height: 70px;
+
+    background: white;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 0 5%;
+
+    box-shadow:
+        0 3px 15px rgba(0,0,0,0.07);
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 100;
+}
+
+
+.brand {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+.brand span {
+    font-size: 30px;
+}
+
+.brand h2 {
+    color: #237b35;
+}
+
+
+.profile {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+}
+
+
+.seed-balance {
+
+    background: #e9f7df;
+
+    padding: 9px 15px;
+
+    border-radius: 20px;
+
+    color: #317331;
+
+    font-weight: bold;
+}
+
+
+.avatar {
+
+    width: 40px;
+    height: 40px;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #238636,
+            #8ac926
+        );
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    color: white;
+
+    font-weight: bold;
+}
+
+
+.logout {
+
+    border: none;
+
+    background: #fff0f0;
+
+    color: #d33b3b;
+
+    padding: 9px 13px;
+
+    border-radius: 9px;
+}
+
+
+/* =====================================================
+   CONTAINER
+===================================================== */
+
+.container {
+
+    width: 90%;
+
+    max-width: 1250px;
+
+    margin: auto;
+
+    padding: 30px 0 50px;
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero {
+
+    border-radius: 25px;
+
+    padding: 40px;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            100deg,
+            rgba(12,83,43,.95),
+            rgba(68,145,55,.72)
+        ),
+        url("https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1500&q=80");
+
+    background-size: cover;
+
+    background-position: center;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+
+    font-size: 36px;
+
+    margin-bottom: 10px;
+}
+
+.hero p {
+
+    max-width: 600px;
+
+    line-height: 1.6;
+
+    opacity: .95;
+}
+
+.hero-tree {
+
+    font-size: 100px;
+}
+
+
+/* =====================================================
+   CARDS
+===================================================== */
+
+.grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap: 18px;
+
+    margin-bottom: 25px;
+}
+
+
+.card {
+
+    background: white;
+
+    border-radius: 18px;
+
+    padding: 22px;
+
+    box-shadow:
+        0 5px 20px rgba(34,75,39,.07);
+
+    border:
+        1px solid #e1eee0;
+}
+
+
+.stat-icon {
+    font-size: 32px;
+}
+
+
+.card h3 {
+
+    margin-top: 12px;
+
+    color: #365d3e;
+}
+
+
+.big-number {
+
+    font-size: 30px;
+
+    font-weight: bold;
+
+    color: #208238;
+
+    margin-top: 5px;
+}
+
+
+.section-title {
+
+    margin: 30px 0 15px;
+
+    color: #255c34;
+}
+
+
+/* =====================================================
+   PROGRESS
+===================================================== */
+
+.progress-box {
+    margin-top: 15px;
+}
+
+.progress {
+
+    height: 11px;
+
+    background: #e7eee5;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+}
+
+.progress-bar {
+
+    height: 100%;
+
+    width: 0%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #45a83d,
+            #9aca3c
+        );
+
+    border-radius: 20px;
+
+    transition: .5s;
+}
+
+
+/* =====================================================
+   WALK SECTION
+===================================================== */
+
+.walk-section {
+
+    display: grid;
+
+    grid-template-columns:
+        1.3fr .7fr;
+
+    gap: 20px;
+}
+
+
+.steps-card {
+
+    text-align: center;
+
+    padding: 35px;
+}
+
+
+.steps-circle {
+
+    width: 230px;
+
+    height: 230px;
+
+    margin: 20px auto;
+
+    border-radius: 50%;
+
+    background:
+        conic-gradient(
+            #39a852 0deg,
+            #e8eee7 0deg
+        );
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    position: relative;
+}
+
+
+.steps-inner {
+
+    width: 185px;
+
+    height: 185px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+.steps-number {
+
+    font-size: 42px;
+
+    font-weight: bold;
+
+    color: #217b35;
+}
+
+
+.steps-label {
+    color: #78907b;
+}
+
+
+.step-buttons {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-top: 15px;
+}
+
+
+.step-buttons button {
+
+    border: none;
+
+    padding: 12px 20px;
+
+    border-radius: 10px;
+
+    color: white;
+
+    background: #298b3d;
+
+    font-weight: bold;
+}
+
+
+.step-buttons button.secondary {
+
+    background: #dcebd9;
+
+    color: #296235;
+}
+
+
+/* =====================================================
+   FOREST
+===================================================== */
+
+.forest-card {
+
+    text-align: center;
+
+    min-height: 100%;
+}
+
+
+.forest {
+
+    height: 240px;
+
+    margin-top: 20px;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            #d8f2ff,
+            #dff1d1
+        );
+
+    position: relative;
+
+    overflow: hidden;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: center;
+}
+
+
+.ground {
+
+    position: absolute;
+
+    bottom: 0;
+
+    width: 100%;
+
+    height: 35px;
+
+    background: #6c9b49;
+}
+
+
+.trees {
+
+    position: absolute;
+
+    bottom: 20px;
+
+    font-size: 40px;
+
+    display: flex;
+
+    gap: 5px;
+
+    align-items: flex-end;
+}
+
+
+.tree {
+
+    animation:
+        grow .5s ease;
+}
+
+
+@keyframes grow {
+
+    from {
+        transform: scale(.2);
+    }
+
+    to {
+        transform: scale(1);
+    }
+
+}
+
+
+/* =====================================================
+   BMI / FITNESS
+===================================================== */
+
+.bmi-section {
+
+    display: grid;
+
+    grid-template-columns:
+        .8fr 1.2fr;
+
+    gap: 20px;
+}
+
+
+.bmi-result {
+
+    text-align: center;
+
+    padding: 30px;
+}
+
+
+.bmi-number {
+
+    font-size: 50px;
+
+    font-weight: bold;
+
+    color: #299442;
+
+    margin: 15px;
+}
+
+
+.exercise-list {
+
+    display: grid;
+
+    gap: 12px;
+
+    margin-top: 15px;
+}
+
+
+.exercise {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 15px;
+
+    border-radius: 13px;
+
+    background: #f2f8ef;
+
+    border-left:
+        5px solid #53a849;
+}
+
+
+.exercise-icon {
+
+    font-size: 30px;
+}
+
+
+/* =====================================================
+   REWARDS
+===================================================== */
+
+.rewards {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 18px;
+}
+
+
+.reward-card {
+
+    text-align: center;
+
+    padding: 25px;
+}
+
+
+.reward-icon {
+
+    font-size: 55px;
+}
+
+
+.reward-card button {
+
+    margin-top: 15px;
+
+    border: none;
+
+    padding: 11px 20px;
+
+    border-radius: 10px;
+
+    background: #298b3d;
+
+    color: white;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+
+    background: #123d21;
+
+    color: #d7ead9;
+
+    text-align: center;
+
+    padding: 30px;
+
+    margin-top: 30px;
+}
+
+footer p {
+    margin-top: 8px;
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media(max-width:900px) {
+
+    .grid {
+
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+
+    .walk-section,
+    .bmi-section {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .rewards {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .hero {
+
+        padding: 30px;
+    }
+
+
+    .hero-tree {
+
+        display: none;
+    }
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:600px) {
+
+    .navbar {
+
+        padding: 0 15px;
+    }
+
+
+    .profile .seed-balance {
+
+        display: none;
+    }
+
+
+    .brand h2 {
+
+        font-size: 21px;
+    }
+
+
+    .container {
+
+        width: 94%;
+    }
+
+
+    .grid {
+
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+
+    .hero h1 {
+
+        font-size: 27px;
+    }
+
+
+    .card {
+
+        padding: 16px;
+    }
+
+
+    .big-number {
+
+        font-size: 23px;
+    }
+
+
+    .steps-circle {
+
+        width: 200px;
+        height: 200px;
+    }
+
+
+    .steps-inner {
+
+        width: 160px;
+        height: 160px;
+    }
+
+
+    .steps-number {
+
+        font-size: 32px;
+    }
+
+
+    .step-buttons {
+
+        flex-wrap: wrap;
+    }
+
+}
