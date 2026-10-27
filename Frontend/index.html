@@ -395,6 +395,16 @@
                     </p>
 
 
+                    <button type="button" id="startStepsBtn">
+                        ▶ Start Live Tracking
+                    </button>
+
+                    <p id="stepTrackingStatus" role="status" aria-live="polite">
+                        Tap Start and allow motion access if requested.
+                    </p>
+
+
+
                     <div class="step-buttons">
 
                         <button onclick="addSteps(1000)">
@@ -837,7 +847,10 @@
             document.getElementById("loginTab").classList.add("active");
 
             document.getElementById("signupTab").classList.remove("active");
+
         }
+
+}
 
 
         function showPage(page) {
@@ -1006,7 +1019,13 @@
 
                 }
 
-            });
+                if (localStorage.getItem("nfAwardedMilestones") === null) {
+                    localStorage.setItem(
+                        "nfAwardedMilestones",
+                        String(Math.floor(steps / 100))
+                    );
+
+                });
 
 
         /* ===============================
@@ -1040,29 +1059,196 @@
            STEP SYSTEM
         ================================ */
 
-        function addSteps(amount) {
 
-            steps += amount;
+        /* =========================================
+           LIVE MOTION STEP ESTIMATOR
+        ========================================= */
 
-            seeds = Math.floor(steps / 100);
+        let liveTracking = false;
+        let lastStepTime = 0;
+        let peakArmed = true;
+        let lastMagnitude = 0;
 
-            saveUserData();
+        const STEP_THRESHOLD = 1.15;
+        const MIN_STEP_INTERVAL = 300;
 
-            updateDashboard();
+        function detectMotionStep(magnitude) {
+            if (!liveTracking || document.hidden) return;
 
+            const now = Date.now();
+
+            if (magnitude < STEP_THRESHOLD * 0.55) {
+                peakArmed = true;
+            }
+
+            if (
+                magnitude >= STEP_THRESHOLD &&
+                peakArmed &&
+                now - lastStepTime >= MIN_STEP_INTERVAL
+            ) {
+                peakArmed = false;
+                lastStepTime = now;
+
+                // Add one estimated step to the existing dashboard.
+                steps += 1;
+
+                // Award one seed for each new 100-step milestone.
+                // Track milestones separately so spending seeds does not
+                // cause the same milestone to be awarded again.
+                const awardedMilestones =
+                    Number(localStorage.getItem("nfAwardedMilestones") || "0");
+
+                const newMilestones = Math.floor(steps / 100);
+
+                if (newMilestones > awardedMilestones) {
+                    seeds += newMilestones - awardedMilestones;
+                    localStorage.setItem(
+                        "nfAwardedMilestones",
+                        String(newMilestones)
+                    );
+                }
+
+                saveUserData();
+                updateDashboard();
+
+                const status = document.getElementById("stepTrackingStatus");
+                if (status) {
+                    status.textContent = "Live tracking is active.";
+                }
+            }
+
+            lastMagnitude = magnitude;
         }
 
+        function handleDeviceMotion(event) {
+            if (!liveTracking || document.hidden) return;
+
+            const a = event.acceleration;
+
+            if (
+                a &&
+                a.x !== null &&
+                a.y !== null &&
+                a.z !== null
+            ) {
+                const magnitude = Math.sqrt(
+                    a.x * a.x + a.y * a.y + a.z * a.z
+                );
+
+                detectMotionStep(magnitude);
+                return;
+            }
+
+            // Fallback for devices that only report acceleration
+            // including gravity.
+            const g = event.accelerationIncludingGravity;
+
+            if (!g) return;
+
+            const totalMagnitude = Math.sqrt(
+                g.x * g.x + g.y * g.y + g.z * g.z
+            );
+
+            detectMotionStep(Math.abs(totalMagnitude - 9.81));
+        }
+
+        async function startLiveTracking() {
+            const status = document.getElementById("stepTrackingStatus");
+            const button = document.getElementById("startStepsBtn");
+
+            if (!window.isSecureContext) {
+                status.textContent = "Please open NatureFlex using HTTPS.";
+                return;
+            }
+
+            if (!("DeviceMotionEvent" in window)) {
+                status.textContent =
+                    "Motion tracking is not supported on this browser.";
+                return;
+            }
+
+            if (typeof DeviceMotionEvent.requestPermission === "function") {
+                try {
+                    const permission =
+                        await DeviceMotionEvent.requestPermission();
+
+                    if (permission !== "granted") {
+                        status.textContent =
+                            "Motion permission was not granted.";
+                        return;
+                    }
+                } catch (error) {
+                    status.textContent =
+                        "Could not request motion permission.";
+                    return;
+                }
+            }
+
+            if (liveTracking) return;
+
+            liveTracking = true;
+            window.addEventListener("devicemotion", handleDeviceMotion);
+
+            button.textContent = "Tracking Active";
+            button.disabled = true;
+
+            status.textContent =
+                "Tracking while this page stays open. Walk naturally with your phone.";
+        }
+
+        document
+            .getElementById("startStepsBtn")
+            .addEventListener("click", startLiveTracking);
+
+        document.addEventListener("visibilitychange", () => {
+            if (document.hidden) {
+                liveTracking = false;
+                window.removeEventListener("devicemotion", handleDeviceMotion);
+
+                const button = document.getElementById("startStepsBtn");
+                if (button) {
+                    button.disabled = false;
+                    button.textContent = "▶ Resume Live Tracking";
+                }
+
+                const status = document.getElementById("stepTrackingStatus");
+                if (status) {
+                    status.textContent =
+                        "Tracking paused because the page is hidden. Tap Resume when you return.";
+                }
+            }
+        });
+
+        // Manual buttons are for development/testing only.
+        function addSteps(amount) {
+            steps += amount;
+
+            const awardedMilestones =
+                Number(localStorage.getItem("nfAwardedMilestones") || "0");
+
+            const newMilestones = Math.floor(steps / 100);
+
+            if (newMilestones > awardedMilestones) {
+                seeds += newMilestones - awardedMilestones;
+                localStorage.setItem(
+                    "nfAwardedMilestones",
+                    String(newMilestones)
+                );
+            }
+
+            saveUserData();
+            updateDashboard();
+        }
 
         function resetSteps() {
+            if (!confirm("Reset your local test steps?")) return;
 
             steps = 0;
 
-            seeds = 0;
-
+            // Do not reset the milestone record: otherwise the same
+            // steps could earn seeds repeatedly.
             saveUserData();
-
             updateDashboard();
-
         }
 
 
