@@ -975,4 +975,135 @@ footer p {
         flex-wrap: wrap;
     }
 
+    
+.nav-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.nav-actions button {
+    border: 1px solid #cde5d2;
+    border-radius: 10px;
+    padding: 10px 14px;
+    color: #175c36;
+    background: #f0faf2;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.rewards-page[hidden] {
+    display: none !important;
+}
+
+.rewards-hero {
+    margin: 24px 0;
+    padding: 30px;
+    border-radius: 22px;
+    color: #fff;
+    background: linear-gradient(135deg, #145c37, #3b9b60);
+}
+
+.rewards-hero h1 {
+    margin: 8px 0;
+    font-size: clamp(28px, 5vw, 42px);
+}
+
+.eyebrow {
+    letter-spacing: 2px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.reward-balance {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 10px 16px;
+    border-radius: 30px;
+    background: rgba(255,255,255,.18);
+    font-weight: 700;
+}
+
+.rewards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    margin-bottom: 28px;
+}
+
+.reward-item,
+.badge-card,
+.challenge-card {
+    padding: 22px;
+}
+
+.reward-icon {
+    font-size: 36px;
+    margin-bottom: 12px;
+}
+
+.reward-cost {
+    display: block;
+    margin: 12px 0;
+    color: #267548;
+    font-weight: 700;
+}
+
+.reward-item button {
+    width: 100%;
+    padding: 11px;
+    border: 0;
+    border-radius: 10px;
+    background: #217847;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.badge-card p {
+    color: #557261;
+}
+
+.challenge-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+.challenge-track {
+    height: 12px;
+    overflow: hidden;
+    border-radius: 20px;
+    background: #e4eee6;
+}
+
+#challengeBar {
+    width: 0;
+    height: 100%;
+    border-radius: inherit;
+    background: #29945a;
+    transition: width .3s ease;
+}
+
+#rewardsMessage {
+    font-weight: 600;
+    color: #216d42;
+}
+
+@media (max-width: 720px) {
+    .rewards-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .challenge-card {
+        grid-template-columns: 1fr;
+    }
+
+    .rewards-hero {
+        padding: 22px;
+    }
+}
+
+
 }

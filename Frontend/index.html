@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,418 +13,592 @@
 
 <body>
 
-<!-- =====================================================
+    <!-- =====================================================
      LOGIN / SIGNUP PAGE
 ===================================================== -->
 
-<section id="authPage">
+    <section id="authPage">
 
-    <div class="auth-box">
+        <div class="auth-box">
 
-        <div class="logo">
-            <div class="logo-icon">🌳</div>
-            <h1>NatureFlex</h1>
-            <p>Walk • Earn • Grow</p>
+            <div class="logo">
+                <div class="logo-icon">🌳</div>
+                <h1>NatureFlex</h1>
+                <p>Walk • Earn • Grow</p>
+            </div>
+
+            <div class="tabs">
+                <button id="loginTab" class="active" onclick="showLogin()">
+                    Login
+                </button>
+
+                <button id="signupTab" onclick="showSignup()">
+                    Sign Up
+                </button>
+            </div>
+
+            <!-- LOGIN FORM -->
+
+            <form id="loginForm">
+
+                <div class="input-group">
+                    <label>Email</label>
+
+                    <input type="email" id="loginEmail" placeholder="Enter your email" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Password</label>
+
+                    <input type="password" id="loginPassword" placeholder="Enter password" required>
+                </div>
+
+                <button class="primary-btn" type="submit">
+
+                    Login to NatureFlex
+
+                </button>
+
+                <p class="auth-message" id="loginMessage">
+                </p>
+
+            </form>
+
+
+            <!-- SIGNUP FORM -->
+
+            <form id="signupForm" style="display:none;">
+
+                <div class="input-group">
+
+                    <label>Full Name</label>
+
+                    <input type="text" id="signupName" placeholder="Your name" required>
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label>Email</label>
+
+                    <input type="email" id="signupEmail" placeholder="Your email" required>
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label>Password</label>
+
+                    <input type="password" id="signupPassword" placeholder="Create password" required>
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label>Height (cm)</label>
+
+                    <input type="number" id="height" placeholder="Example: 170" required>
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label>Weight (kg)</label>
+
+                    <input type="number" id="weight" placeholder="Example: 65" required>
+
+                </div>
+
+
+                <button class="primary-btn" type="submit">
+
+                    Create NatureFlex Account
+
+                </button>
+
+
+                <p class="auth-message" id="signupMessage">
+                </p>
+
+            </form>
+
         </div>
 
-        <div class="tabs">
-            <button id="loginTab"
-                    class="active"
-                    onclick="showLogin()">
-                Login
-            </button>
-
-            <button id="signupTab"
-                    onclick="showSignup()">
-                Sign Up
-            </button>
-        </div>
-
-        <!-- LOGIN FORM -->
-
-        <form id="loginForm">
-
-            <div class="input-group">
-                <label>Email</label>
-
-                <input
-                    type="email"
-                    id="loginEmail"
-                    placeholder="Enter your email"
-                    required>
-            </div>
-
-            <div class="input-group">
-                <label>Password</label>
-
-                <input
-                    type="password"
-                    id="loginPassword"
-                    placeholder="Enter password"
-                    required>
-            </div>
-
-            <button
-                class="primary-btn"
-                type="submit">
-
-                Login to NatureFlex
-
-            </button>
-
-            <p
-                class="auth-message"
-                id="loginMessage">
-            </p>
-
-        </form>
+    </section>
 
 
-        <!-- SIGNUP FORM -->
-
-        <form
-            id="signupForm"
-            style="display:none;">
-
-            <div class="input-group">
-
-                <label>Full Name</label>
-
-                <input
-                    type="text"
-                    id="signupName"
-                    placeholder="Your name"
-                    required>
-
-            </div>
-
-
-            <div class="input-group">
-
-                <label>Email</label>
-
-                <input
-                    type="email"
-                    id="signupEmail"
-                    placeholder="Your email"
-                    required>
-
-            </div>
-
-
-            <div class="input-group">
-
-                <label>Password</label>
-
-                <input
-                    type="password"
-                    id="signupPassword"
-                    placeholder="Create password"
-                    required>
-
-            </div>
-
-
-            <div class="input-group">
-
-                <label>Height (cm)</label>
-
-                <input
-                    type="number"
-                    id="height"
-                    placeholder="Example: 170"
-                    required>
-
-            </div>
-
-
-            <div class="input-group">
-
-                <label>Weight (kg)</label>
-
-                <input
-                    type="number"
-                    id="weight"
-                    placeholder="Example: 65"
-                    required>
-
-            </div>
-
-
-            <button
-                class="primary-btn"
-                type="submit">
-
-                Create NatureFlex Account
-
-            </button>
-
-
-            <p
-                class="auth-message"
-                id="signupMessage">
-            </p>
-
-        </form>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
+    <!-- =====================================================
      MAIN APPLICATION
 ===================================================== -->
 
-<section id="app">
+    <section id="app">
 
-    <!-- NAVBAR -->
+        <!-- NAVBAR -->
 
-    <nav class="navbar">
+        <nav class="navbar">
 
-        <div class="brand">
+            <div class="brand">
 
-            <span>🌳</span>
+                <span>🌳</span>
 
-            <h2>NatureFlex</h2>
-
-        </div>
-
-
-        <div class="profile">
-
-            <div class="seed-balance">
-
-                🌰
-                <span id="seedBalance">0</span>
-                Seeds
+                <h2>NatureFlex</h2>
 
             </div>
 
 
-            <div
-                class="avatar"
-                id="avatar">
-
-                P
-
+            <div class="nav-actions">
+                <button type="button" onclick="showPage('dashboard')">
+                    🏠 Dashboard
+                </button>
+                <button type="button" onclick="showPage('rewards')">
+                    🎁 Rewards
+                </button>
             </div>
 
 
-            <button
-                class="logout"
-                onclick="logout()">
 
-                Logout
+            <div class="profile">
 
-            </button>
+                <div class="seed-balance">
 
-        </div>
-
-    </nav>
-
-
-    <!-- MAIN CONTENT -->
-
-    <main class="container">
-
-
-        <!-- HERO -->
-
-        <section class="hero">
-
-            <div>
-
-                <h1>
-                    Grow Your Health.<br>
-                    Grow Your Forest. 🌳
-                </h1>
-
-                <p>
-
-                    Walk every day, collect seeds,
-                    grow your virtual forest and unlock
-                    real-world rewards while improving
-                    your fitness.
-
-                </p>
-
-            </div>
-
-
-            <div class="hero-tree">
-
-                🌳
-
-            </div>
-
-        </section>
-
-
-        <!-- STATISTICS -->
-
-        <div class="grid">
-
-
-            <!-- STEPS -->
-
-            <div class="card">
-
-                <div class="stat-icon">
-                    👟
-                </div>
-
-                <h3>
-                    Today's Steps
-                </h3>
-
-                <div
-                    class="big-number"
-                    id="todaySteps">
-
-                    0
-
-                </div>
-
-                <small>
-                    Goal: 10,000 steps
-                </small>
-
-            </div>
-
-
-            <!-- SEEDS -->
-
-            <div class="card">
-
-                <div class="stat-icon">
                     🌰
-                </div>
-
-                <h3>
-                    Seeds Earned
-                </h3>
-
-                <div
-                    class="big-number"
-                    id="todaySeeds">
-
-                    0
+                    <span id="seedBalance">0</span>
+                    Seeds
 
                 </div>
 
-                <small>
-                    1 seed / 100 steps
-                </small>
+
+                <div class="avatar" id="avatar">
+
+                    P
+
+                </div>
+
+
+                <button class="logout" onclick="logout()">
+
+                    Logout
+
+                </button>
 
             </div>
 
+        </nav>
 
-            <!-- TREES -->
 
-            <div class="card">
+        <!-- MAIN CONTENT -->
 
-                <div class="stat-icon">
+        <main class="container" id="dashboardPage">
+
+
+            <!-- HERO -->
+
+            <section class="hero">
+
+                <div>
+
+                    <h1>
+                        Grow Your Health.<br>
+                        Grow Your Forest. 🌳
+                    </h1>
+
+                    <p>
+
+                        Walk every day, collect seeds,
+                        grow your virtual forest and unlock
+                        real-world rewards while improving
+                        your fitness.
+
+                    </p>
+
+                </div>
+
+
+                <div class="hero-tree">
+
                     🌳
-                </div>
-
-                <h3>
-                    Trees Planted
-                </h3>
-
-                <div
-                    class="big-number"
-                    id="treeCount">
-
-                    0
 
                 </div>
 
-                <small>
-                    Keep growing!
-                </small>
-
-            </div>
+            </section>
 
 
-            <!-- FOREST -->
+            <!-- STATISTICS -->
 
-            <div class="card">
-
-                <div class="stat-icon">
-                    🏆
-                </div>
-
-                <h3>
-                    Forest Progress
-                </h3>
+            <div class="grid">
 
 
-                <div class="progress-box">
+                <!-- STEPS -->
 
-                    <div class="progress">
+                <div class="card">
 
-                        <div
-                            class="progress-bar"
-                            id="forestProgress">
-                        </div>
+                    <div class="stat-icon">
+                        👟
+                    </div>
+
+                    <h3>
+                        Today's Steps
+                    </h3>
+
+                    <div class="big-number" id="todaySteps">
+
+                        0
 
                     </div>
 
-
-                    <small id="forestText">
-
-                        0% completed
-
+                    <small>
+                        Goal: 10,000 steps
                     </small>
 
                 </div>
 
-            </div>
 
-        </div>
+                <!-- SEEDS -->
 
+                <div class="card">
 
-        <!-- WALKING -->
+                    <div class="stat-icon">
+                        🌰
+                    </div>
 
-        <h2 class="section-title">
+                    <h3>
+                        Seeds Earned
+                    </h3>
 
-            🚶 Your Walking Journey
+                    <div class="big-number" id="todaySeeds">
 
-        </h2>
+                        0
 
+                    </div>
 
-        <section class="walk-section">
+                    <small>
+                        1 seed / 100 steps
+                    </small>
 
-
-            <!-- STEP COUNTER -->
-
-            <div class="card steps-card">
-
-                <h2>
-                    Daily Step Counter
-                </h2>
-
-
-                <div
-                    class="steps-circle"
-                    id="stepCircle">
+                </div>
 
 
-                    <div class="steps-inner">
+                <!-- TREES -->
 
-                        <div
-                            class="steps-number"
-                            id="stepDisplay">
+                <div class="card">
 
-                            0
+                    <div class="stat-icon">
+                        🌳
+                    </div>
+
+                    <h3>
+                        Trees Planted
+                    </h3>
+
+                    <div class="big-number" id="treeCount">
+
+                        0
+
+                    </div>
+
+                    <small>
+                        Keep growing!
+                    </small>
+
+                </div>
+
+
+                <!-- FOREST -->
+
+                <div class="card">
+
+                    <div class="stat-icon">
+                        🏆
+                    </div>
+
+                    <h3>
+                        Forest Progress
+                    </h3>
+
+
+                    <div class="progress-box">
+
+                        <div class="progress">
+
+                            <div class="progress-bar" id="forestProgress">
+                            </div>
 
                         </div>
 
 
-                        <div class="steps-label">
+                        <small id="forestText">
 
-                            steps
+                            0% completed
+
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- WALKING -->
+
+            <h2 class="section-title">
+
+                🚶 Your Walking Journey
+
+            </h2>
+
+
+            <section class="walk-section">
+
+
+                <!-- STEP COUNTER -->
+
+                <div class="card steps-card">
+
+                    <h2>
+                        Daily Step Counter
+                    </h2>
+
+
+                    <div class="steps-circle" id="stepCircle">
+
+
+                        <div class="steps-inner">
+
+                            <div class="steps-number" id="stepDisplay">
+
+                                0
+
+                            </div>
+
+
+                            <div class="steps-label">
+
+                                steps
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <p>
+
+                        Every step takes you closer
+                        to your next reward.
+
+                    </p>
+
+
+                    <div class="step-buttons">
+
+                        <button onclick="addSteps(1000)">
+
+                            +1,000 Steps
+
+                        </button>
+
+
+                        <button class="secondary" onclick="addSteps(500)">
+
+                            +500
+
+                        </button>
+
+
+                        <button class="secondary" onclick="resetSteps()">
+
+                            Reset
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FOREST -->
+
+                <div class="card forest-card">
+
+                    <h2>
+                        🌲 My Forest
+                    </h2>
+
+                    <p>
+
+                        Plant trees using your earned seeds.
+
+                    </p>
+
+
+                    <div class="forest">
+
+                        <div class="trees" id="trees">
+
+                            🌱
+
+                        </div>
+
+                        <div class="ground"></div>
+
+                    </div>
+
+
+                    <button class="primary-btn" onclick="plantTree()">
+
+                        🌰 Plant Tree — 10 Seeds
+
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- FITNESS -->
+
+            <h2 class="section-title">
+
+                💪 Your Fitness Zone
+
+            </h2>
+
+
+            <section class="bmi-section">
+
+
+                <!-- BMI -->
+
+                <div class="card bmi-result">
+
+                    <h2>
+                        Personal Fitness Profile
+                    </h2>
+
+
+                    <div class="bmi-number" id="bmiValue">
+
+                        --
+
+                    </div>
+
+
+                    <h3 id="bmiStatus">
+
+                        BMI not calculated
+
+                    </h3>
+
+
+                    <p>
+
+                        Your exercise suggestions are
+                        personalized according to your
+                        profile.
+
+                    </p>
+
+                </div>
+
+
+                <!-- EXERCISES -->
+
+                <div class="card">
+
+                    <h2>
+                        Recommended Activities
+                    </h2>
+
+
+                    <div class="exercise-list">
+
+
+                        <div class="exercise">
+
+                            <div class="exercise-icon">
+                                🚶
+                            </div>
+
+                            <div>
+
+                                <b>
+                                    Brisk Walking
+                                </b>
+
+                                <p>
+                                    Build daily walking consistency.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="exercise">
+
+                            <div class="exercise-icon">
+                                🧘
+                            </div>
+
+                            <div>
+
+                                <b>
+                                    Stretching
+                                </b>
+
+                                <p>
+                                    Improve flexibility and mobility.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="exercise">
+
+                            <div class="exercise-icon">
+                                🚴
+                            </div>
+
+                            <div>
+
+                                <b>
+                                    Cycling
+                                </b>
+
+                                <p>
+                                    Enjoy a low-impact cardio activity.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="exercise">
+
+                            <div class="exercise-icon">
+                                🏋️
+                            </div>
+
+                            <div>
+
+                                <b>
+                                    Strength Exercises
+                                </b>
+
+                                <p>
+                                    Build functional strength gradually.
+                                </p>
+
+                            </div>
 
                         </div>
 
@@ -432,903 +606,810 @@
 
                 </div>
 
-
-                <p>
-
-                    Every step takes you closer
-                    to your next reward.
-
-                </p>
+            </section>
 
 
-                <div class="step-buttons">
+            <!-- REWARDS -->
 
-                    <button
-                        onclick="addSteps(1000)">
+            <h2 class="section-title">
 
-                        +1,000 Steps
+                🎁 Nature Rewards
 
-                    </button>
-
-
-                    <button
-                        class="secondary"
-                        onclick="addSteps(500)">
-
-                        +500
-
-                    </button>
+            </h2>
 
 
-                    <button
-                        class="secondary"
-                        onclick="resetSteps()">
-
-                        Reset
-
-                    </button>
-
-                </div>
-
-            </div>
+            <section class="rewards">
 
 
-            <!-- FOREST -->
+                <div class="card reward-card">
 
-            <div class="card forest-card">
-
-                <h2>
-                    🌲 My Forest
-                </h2>
-
-                <p>
-
-                    Plant trees using your earned seeds.
-
-                </p>
-
-
-                <div class="forest">
-
-                    <div
-                        class="trees"
-                        id="trees">
-
+                    <div class="reward-icon">
                         🌱
-
                     </div>
 
-                    <div class="ground"></div>
+                    <h3>
+                        Plant More Trees
+                    </h3>
+
+                    <p>
+                        Spend seeds to grow your digital forest.
+                    </p>
+
+                    <button onclick="plantTree()">
+
+                        Plant Tree
+
+                    </button>
 
                 </div>
 
 
-                <button
-                    class="primary-btn"
-                    onclick="plantTree()">
+                <div class="card reward-card">
 
-                    🌰 Plant Tree — 10 Seeds
+                    <div class="reward-icon">
+                        🏅
+                    </div>
 
-                </button>
+                    <h3>
+                        Forest Badge
+                    </h3>
 
+                    <p>
+                        Complete a forest and unlock a
+                        NatureFlex badge.
+                    </p>
+
+                    <button onclick="checkForest()">
+
+                        Check Progress
+
+                    </button>
+
+                </div>
+
+
+                <div class="card reward-card">
+
+                    <div class="reward-icon">
+                        🎁
+                    </div>
+
+                    <h3>
+                        Real Rewards
+                    </h3>
+
+                    <p>
+                        Complete your forest to become
+                        eligible for real-world rewards.
+                    </p>
+
+                    <button onclick="redeemReward()">
+
+                        Redeem
+
+                    </button>
+
+                </div>
+
+            </section>
+
+        </main>
+
+
+
+        <section id="rewardsPage" class="container rewards-page" hidden>
+            <div class="rewards-hero">
+                <p class="eyebrow">WALK • EARN • GROW</p>
+                <h1>Nature Rewards 🎁</h1>
+                <p>Every step helps you grow. Celebrate your progress
+                    and unlock new achievements.</p>
+
+                <div class="reward-balance">
+                    🌰 <span id="rewardSeedBalance">0</span> Seeds
+                </div>
             </div>
 
+            <h2 class="section-title">Your Reward Shop</h2>
+
+            <div class="rewards-grid">
+                <article class="card reward-item">
+                    <div class="reward-icon">🌱</div>
+                    <h3>Plant a Tree</h3>
+                    <p>Grow your virtual forest with your earned seeds.</p>
+                    <span class="reward-cost">10 seeds</span>
+                    <button type="button" onclick="plantTree()">
+                        Plant Tree
+                    </button>
+                </article>
+
+                <article class="card reward-item">
+                    <div class="reward-icon">🏅</div>
+                    <h3>Forest Explorer</h3>
+                    <p>Complete a forest of 100 trees to unlock this milestone.</p>
+                    <span class="reward-cost">100 trees</span>
+                    <button type="button" onclick="checkForest()">
+                        Check Badge
+                    </button>
+                </article>
+
+                <article class="card reward-item">
+                    <div class="reward-icon">🎁</div>
+                    <h3>Nature Reward</h3>
+                    <p>Request a reward after completing your forest.</p>
+                    <span class="reward-cost">100 trees</span>
+                    <button type="button" onclick="redeemReward()">
+                        Request Reward
+                    </button>
+                </article>
+            </div>
+
+            <h2 class="section-title">🏆 Your Achievements</h2>
+
+            <div class="rewards-grid">
+                <article class="card badge-card">
+                    <div class="reward-icon">👟</div>
+                    <h3>First Steps</h3>
+                    <p id="firstStepsStatus">Walk your first 100 steps.</p>
+                </article>
+
+                <article class="card badge-card">
+                    <div class="reward-icon">🌳</div>
+                    <h3>Young Gardener</h3>
+                    <p id="gardenerStatus">Plant your first tree.</p>
+                </article>
+
+                <article class="card badge-card">
+                    <div class="reward-icon">🌲</div>
+                    <h3>Forest Champion</h3>
+                    <p id="championStatus">Complete 100 trees.</p>
+                </article>
+            </div>
+
+            <h2 class="section-title">🎯 Daily Challenge</h2>
+
+            <article class="card challenge-card">
+                <div>
+                    <h3>Take 5,000 Steps</h3>
+                    <p>Build a walking habit at your own comfortable pace.</p>
+                </div>
+
+                <div class="challenge-progress">
+                    <div class="challenge-track">
+                        <div id="challengeBar"></div>
+                    </div>
+                    <p id="challengeText">0 / 5,000 steps</p>
+                </div>
+            </article>
+
+            <p id="rewardsMessage" role="status" aria-live="polite"></p>
         </section>
 
 
-        <!-- FITNESS -->
 
-        <h2 class="section-title">
+        <!-- FOOTER -->
 
-            💪 Your Fitness Zone
+        <footer>
 
-        </h2>
+            <h3>
+                🌱 NatureFlex
+            </h3>
 
+            <p>
+                Walk • Earn • Plant • Grow
+            </p>
 
-        <section class="bmi-section">
+            <p>
+                © 2026 NatureFlex.
+                Building healthier people
+                and a greener planet.
+            </p>
 
+        </footer>
 
-            <!-- BMI -->
+    </section>
 
-            <div class="card bmi-result">
 
-                <h2>
-                    Personal Fitness Profile
-                </h2>
-
-
-                <div
-                    class="bmi-number"
-                    id="bmiValue">
-
-                    --
-
-                </div>
-
-
-                <h3 id="bmiStatus">
-
-                    BMI not calculated
-
-                </h3>
-
-
-                <p>
-
-                    Your exercise suggestions are
-                    personalized according to your
-                    profile.
-
-                </p>
-
-            </div>
-
-
-            <!-- EXERCISES -->
-
-            <div class="card">
-
-                <h2>
-                    Recommended Activities
-                </h2>
-
-
-                <div class="exercise-list">
-
-
-                    <div class="exercise">
-
-                        <div class="exercise-icon">
-                            🚶
-                        </div>
-
-                        <div>
-
-                            <b>
-                                Brisk Walking
-                            </b>
-
-                            <p>
-                                Build daily walking consistency.
-                            </p>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="exercise">
-
-                        <div class="exercise-icon">
-                            🧘
-                        </div>
-
-                        <div>
-
-                            <b>
-                                Stretching
-                            </b>
-
-                            <p>
-                                Improve flexibility and mobility.
-                            </p>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="exercise">
-
-                        <div class="exercise-icon">
-                            🚴
-                        </div>
-
-                        <div>
-
-                            <b>
-                                Cycling
-                            </b>
-
-                            <p>
-                                Enjoy a low-impact cardio activity.
-                            </p>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="exercise">
-
-                        <div class="exercise-icon">
-                            🏋️
-                        </div>
-
-                        <div>
-
-                            <b>
-                                Strength Exercises
-                            </b>
-
-                            <p>
-                                Build functional strength gradually.
-                            </p>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- REWARDS -->
-
-        <h2 class="section-title">
-
-            🎁 Nature Rewards
-
-        </h2>
-
-
-        <section class="rewards">
-
-
-            <div class="card reward-card">
-
-                <div class="reward-icon">
-                    🌱
-                </div>
-
-                <h3>
-                    Plant More Trees
-                </h3>
-
-                <p>
-                    Spend seeds to grow your digital forest.
-                </p>
-
-                <button onclick="plantTree()">
-
-                    Plant Tree
-
-                </button>
-
-            </div>
-
-
-            <div class="card reward-card">
-
-                <div class="reward-icon">
-                    🏅
-                </div>
-
-                <h3>
-                    Forest Badge
-                </h3>
-
-                <p>
-                    Complete a forest and unlock a
-                    NatureFlex badge.
-                </p>
-
-                <button onclick="checkForest()">
-
-                    Check Progress
-
-                </button>
-
-            </div>
-
-
-            <div class="card reward-card">
-
-                <div class="reward-icon">
-                    🎁
-                </div>
-
-                <h3>
-                    Real Rewards
-                </h3>
-
-                <p>
-                    Complete your forest to become
-                    eligible for real-world rewards.
-                </p>
-
-                <button onclick="redeemReward()">
-
-                    Redeem
-
-                </button>
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-    <!-- FOOTER -->
-
-    <footer>
-
-        <h3>
-            🌱 NatureFlex
-        </h3>
-
-        <p>
-            Walk • Earn • Plant • Grow
-        </p>
-
-        <p>
-            © 2026 NatureFlex.
-            Building healthier people
-            and a greener planet.
-        </p>
-
-    </footer>
-
-</section>
-
-
-<!-- =====================================================
+    <!-- =====================================================
      JAVASCRIPT
 ===================================================== -->
 
-<script>
+    <script>
 
-let currentUser = null;
+        let currentUser = null;
 
-let steps = 0;
-let seeds = 0;
-let trees = 0;
+        let steps = 0;
+        let seeds = 0;
+        let trees = 0;
 
-const FOREST_SIZE = 100;
+        const FOREST_SIZE = 100;
 
 
-/* ===============================
-   LOGIN / SIGNUP
-================================ */
+        /* ===============================
+           LOGIN / SIGNUP
+        ================================ */
 
-function showLogin() {
+        function showLogin() {
 
-    document.getElementById("loginForm").style.display = "block";
+            document.getElementById("loginForm").style.display = "block";
 
-    document.getElementById("signupForm").style.display = "none";
+            document.getElementById("signupForm").style.display = "none";
 
-    document.getElementById("loginTab").classList.add("active");
+            document.getElementById("loginTab").classList.add("active");
 
-    document.getElementById("signupTab").classList.remove("active");
-}
+            document.getElementById("signupTab").classList.remove("active");
+        }
 
 
-function showSignup() {
+        function showPage(page) {
+            const dashboard = document.getElementById("dashboardPage");
+            const rewards = document.getElementById("rewardsPage");
 
-    document.getElementById("loginForm").style.display = "none";
+            dashboard.hidden = page !== "dashboard";
+            rewards.hidden = page !== "rewards";
 
-    document.getElementById("signupForm").style.display = "block";
+            if (page === "rewards") {
+                updateRewardsPage();
+            }
 
-    document.getElementById("signupTab").classList.add("active");
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
 
-    document.getElementById("loginTab").classList.remove("active");
-}
+        function updateRewardsPage() {
+            document.getElementById("rewardSeedBalance").textContent = seeds;
 
+            document.getElementById("firstStepsStatus").textContent =
+                steps >= 100 ? "✅ First 100 steps completed!" :
+                    "Walk your first 100 steps.";
 
-/* ===============================
-   SIGNUP
-================================ */
+            document.getElementById("gardenerStatus").textContent =
+                trees >= 1 ? "✅ You planted your first tree!" :
+                    "Plant your first tree.";
 
-document.getElementById("signupForm")
-.addEventListener("submit", function(e) {
+            document.getElementById("championStatus").textContent =
+                trees >= 100 ? "🏆 Forest completed!" :
+                    `${trees}/100 trees planted.`;
 
-    e.preventDefault();
+            const progress = Math.min((steps / 5000) * 100, 100);
 
-    const name =
-        document.getElementById("signupName").value;
+            document.getElementById("challengeBar").style.width =
+                `${progress}%`;
 
-    const email =
-        document.getElementById("signupEmail").value;
+            document.getElementById("challengeText").textContent =
+                `${Math.min(steps, 5000).toLocaleString()} / 5,000 steps`;
 
-    const password =
-        document.getElementById("signupPassword").value;
+            document.getElementById("rewardsMessage").textContent =
+                trees >= 100
+                    ? "Your forest is complete! You can request a reward."
+                    : "Keep walking and planting to unlock more achievements.";
+        }
 
-    const height =
-        Number(document.getElementById("height").value);
 
-    const weight =
-        Number(document.getElementById("weight").value);
+        function showSignup() {
 
+            document.getElementById("loginForm").style.display = "none";
 
-    const user = {
+            document.getElementById("signupForm").style.display = "block";
 
-        name,
-        email,
-        password,
-        height,
-        weight,
+            document.getElementById("signupTab").classList.add("active");
 
-        steps: 0,
-        seeds: 0,
-        trees: 0
+            document.getElementById("loginTab").classList.remove("active");
+        }
 
-    };
 
+        /* ===============================
+           SIGNUP
+        ================================ */
 
-    /*
-        DEMO ONLY.
+        document.getElementById("signupForm")
+            .addEventListener("submit", function (e) {
 
-        In the real application this data
-        should be sent to your backend API
-        and stored inside SQL.
-    */
+                e.preventDefault();
 
-    localStorage.setItem(
-        "natureFlexUser",
-        JSON.stringify(user)
-    );
+                const name =
+                    document.getElementById("signupName").value;
 
+                const email =
+                    document.getElementById("signupEmail").value;
 
-    document.getElementById("signupMessage").innerText =
-        "Account created successfully! Please login.";
+                const password =
+                    document.getElementById("signupPassword").value;
 
-    showLogin();
+                const height =
+                    Number(document.getElementById("height").value);
 
-});
+                const weight =
+                    Number(document.getElementById("weight").value);
 
 
-/* ===============================
-   LOGIN
-================================ */
+                const user = {
 
-document.getElementById("loginForm")
-.addEventListener("submit", function(e) {
+                    name,
+                    email,
+                    password,
+                    height,
+                    weight,
 
-    e.preventDefault();
+                    steps: 0,
+                    seeds: 0,
+                    trees: 0
 
-    const email =
-        document.getElementById("loginEmail").value;
+                };
 
-    const password =
-        document.getElementById("loginPassword").value;
 
+                /*
+                    DEMO ONLY.
+            
+                    In the real application this data
+                    should be sent to your backend API
+                    and stored inside SQL.
+                */
 
-    const savedUser =
-        JSON.parse(
-            localStorage.getItem("natureFlexUser")
-        );
+                localStorage.setItem(
+                    "natureFlexUser",
+                    JSON.stringify(user)
+                );
 
 
-    if(
-        savedUser &&
-        savedUser.email === email &&
-        savedUser.password === password
-    ) {
+                document.getElementById("signupMessage").innerText =
+                    "Account created successfully! Please login.";
 
-        currentUser = savedUser;
+                showLogin();
 
-        steps = savedUser.steps || 0;
+            });
 
-        seeds = savedUser.seeds || 0;
 
-        trees = savedUser.trees || 0;
+        /* ===============================
+           LOGIN
+        ================================ */
 
-        openDashboard();
+        document.getElementById("loginForm")
+            .addEventListener("submit", function (e) {
 
-    }
+                e.preventDefault();
 
-    else {
+                const email =
+                    document.getElementById("loginEmail").value;
 
-        document.getElementById("loginMessage")
-        .innerText =
-        "Invalid email or password.";
+                const password =
+                    document.getElementById("loginPassword").value;
 
-    }
 
-});
+                const savedUser =
+                    JSON.parse(
+                        localStorage.getItem("natureFlexUser")
+                    );
 
 
-/* ===============================
-   DASHBOARD
-================================ */
+                if (
+                    savedUser &&
+                    savedUser.email === email &&
+                    savedUser.password === password
+                ) {
 
-function openDashboard() {
+                    currentUser = savedUser;
 
-    document.getElementById("authPage")
-    .style.display = "none";
+                    steps = savedUser.steps || 0;
 
-    document.getElementById("app")
-    .style.display = "block";
+                    seeds = savedUser.seeds || 0;
 
+                    trees = savedUser.trees || 0;
 
-    document.getElementById("avatar")
-    .innerText =
-    currentUser.name
-    .charAt(0)
-    .toUpperCase();
+                    openDashboard();
 
+                }
 
-    calculateBMI();
+                else {
 
-    updateDashboard();
+                    document.getElementById("loginMessage")
+                        .innerText =
+                        "Invalid email or password.";
 
-}
+                }
 
+            });
 
-/* ===============================
-   STEP SYSTEM
-================================ */
 
-function addSteps(amount) {
+        /* ===============================
+           DASHBOARD
+        ================================ */
 
-    steps += amount;
+        function openDashboard() {
 
-    seeds = Math.floor(steps / 100);
+            document.getElementById("authPage")
+                .style.display = "none";
 
-    saveUserData();
+            document.getElementById("app")
+                .style.display = "block";
 
-    updateDashboard();
 
-}
+            document.getElementById("avatar")
+                .innerText =
+                currentUser.name
+                    .charAt(0)
+                    .toUpperCase();
 
 
-function resetSteps() {
+            calculateBMI();
 
-    steps = 0;
+            updateDashboard();
 
-    seeds = 0;
+        }
 
-    saveUserData();
 
-    updateDashboard();
+        /* ===============================
+           STEP SYSTEM
+        ================================ */
 
-}
+        function addSteps(amount) {
 
+            steps += amount;
 
-/* ===============================
-   UPDATE DASHBOARD
-================================ */
+            seeds = Math.floor(steps / 100);
 
-function updateDashboard() {
+            saveUserData();
 
-    document.getElementById("todaySteps")
-    .innerText =
-    steps.toLocaleString();
+            updateDashboard();
 
+        }
 
-    document.getElementById("stepDisplay")
-    .innerText =
-    steps.toLocaleString();
 
+        function resetSteps() {
 
-    document.getElementById("todaySeeds")
-    .innerText =
-    seeds;
+            steps = 0;
 
+            seeds = 0;
 
-    document.getElementById("seedBalance")
-    .innerText =
-    seeds;
+            saveUserData();
 
+            updateDashboard();
 
-    document.getElementById("treeCount")
-    .innerText =
-    trees;
+        }
 
 
-    let progress =
-        Math.min(
-            (trees / FOREST_SIZE) * 100,
-            100
-        );
+        /* ===============================
+           UPDATE DASHBOARD
+        ================================ */
 
+        function updateDashboard() {
 
-    document.getElementById("forestProgress")
-    .style.width =
-    progress + "%";
+            document.getElementById("todaySteps")
+                .innerText =
+                steps.toLocaleString();
 
 
-    document.getElementById("forestText")
-    .innerText =
-    Math.floor(progress) +
-    "% completed";
+            document.getElementById("stepDisplay")
+                .innerText =
+                steps.toLocaleString();
 
 
-    let stepProgress =
-        Math.min(
-            (steps / 10000) * 360,
-            360
-        );
+            document.getElementById("todaySeeds")
+                .innerText =
+                seeds;
 
 
-    document.getElementById("stepCircle")
-    .style.background =
-    `conic-gradient(
+            document.getElementById("seedBalance")
+                .innerText =
+                seeds;
+
+
+            document.getElementById("treeCount")
+                .innerText =
+                trees;
+
+
+            let progress =
+                Math.min(
+                    (trees / FOREST_SIZE) * 100,
+                    100
+                );
+
+
+            document.getElementById("forestProgress")
+                .style.width =
+                progress + "%";
+
+
+            document.getElementById("forestText")
+                .innerText =
+                Math.floor(progress) +
+                "% completed";
+
+
+            let stepProgress =
+                Math.min(
+                    (steps / 10000) * 360,
+                    360
+                );
+
+
+            document.getElementById("stepCircle")
+                .style.background =
+                `conic-gradient(
         #39a852 ${stepProgress}deg,
         #e8eee7 ${stepProgress}deg
     )`;
 
 
-    renderTrees();
+            renderTrees();
+            updateRewardsPage();
 
-}
+        }
 
 
-/* ===============================
-   PLANT TREE
-================================ */
+        /* ===============================
+           PLANT TREE
+        ================================ */
 
-function plantTree() {
+        function plantTree() {
 
-    if(seeds < 10) {
+            if (seeds < 10) {
 
-        alert(
-            "You need 10 seeds to plant a tree. Keep walking! 🌱"
+                alert(
+                    "You need 10 seeds to plant a tree. Keep walking! 🌱"
+                );
+
+                return;
+            }
+
+
+            seeds -= 10;
+
+            trees++;
+
+
+            saveUserData();
+
+            updateDashboard();
+
+
+            if (trees >= FOREST_SIZE) {
+
+                alert(
+                    "🎉 Congratulations! You completed your forest!"
+                );
+
+            }
+
+            else {
+
+                alert(
+                    "🌳 Tree planted successfully!"
+                );
+
+            }
+
+        }
+
+
+        /* ===============================
+           RENDER FOREST
+        ================================ */
+
+        function renderTrees() {
+
+            const treeContainer =
+                document.getElementById("trees");
+
+
+            treeContainer.innerHTML = "";
+
+
+            let displayTrees =
+                Math.min(trees, 25);
+
+
+            for (let i = 0; i < displayTrees; i++) {
+
+                const tree =
+                    document.createElement("span");
+
+                tree.className = "tree";
+
+                tree.innerText = "🌳";
+
+                treeContainer.appendChild(tree);
+
+            }
+
+
+            if (trees === 0) {
+
+                treeContainer.innerHTML = "🌱";
+
+            }
+
+        }
+
+
+        /* ===============================
+           FOREST
+        ================================ */
+
+        function checkForest() {
+
+            if (trees >= FOREST_SIZE) {
+
+                alert(
+                    "🏆 Forest Complete! Real rewards unlocked."
+                );
+
+            }
+
+            else {
+
+                const remaining =
+                    FOREST_SIZE - trees;
+
+                alert(
+                    `🌱 ${remaining} more trees needed.`
+                );
+
+            }
+
+        }
+
+
+        /* ===============================
+           REWARDS
+        ================================ */
+
+        function redeemReward() {
+
+            if (trees >= FOREST_SIZE) {
+
+                alert(
+                    "🎁 Reward redemption unlocked!"
+                );
+
+            }
+
+            else {
+
+                alert(
+                    "🔒 Complete 100 trees to unlock rewards."
+                );
+
+            }
+
+        }
+
+
+        /* ===============================
+           BMI
+        ================================ */
+
+        function calculateBMI() {
+
+            if (!currentUser) return;
+
+
+            const heightMeters =
+                currentUser.height / 100;
+
+
+            const weight =
+                currentUser.weight;
+
+
+            const bmi =
+                weight /
+                (heightMeters * heightMeters);
+
+
+            document.getElementById("bmiValue")
+                .innerText =
+                bmi.toFixed(1);
+
+
+            let status;
+
+
+            if (bmi < 18.5) {
+
+                status = "Underweight";
+
+            }
+
+            else if (bmi < 25) {
+
+                status = "Healthy Range";
+
+            }
+
+            else if (bmi < 30) {
+
+                status = "Overweight";
+
+            }
+
+            else {
+
+                status = "Obesity Range";
+
+            }
+
+
+            document.getElementById("bmiStatus")
+                .innerText =
+                status;
+
+        }
+
+
+        /* ===============================
+           SAVE USER
+        ================================ */
+
+        function saveUserData() {
+
+            if (!currentUser) return;
+
+
+            currentUser.steps = steps;
+
+            currentUser.seeds = seeds;
+
+            currentUser.trees = trees;
+
+
+            localStorage.setItem(
+                "natureFlexUser",
+                JSON.stringify(currentUser)
+            );
+
+        }
+
+        localStorage.setItem(
+            "natureFlexUser",
+            JSON.stringify(currentUser)
         );
 
-        return;
-    }
+        fetch("https://natureflex.onrender.com/api/signup", {
+            method: "POST",
 
+            headers: {
+                "Content-Type": "application/json"
+            },
 
-    seeds -= 10;
+            body: JSON.stringify({
+                name: name,
+                email: email,
+                password: password,
+                height: height,
+                weight: weight
+            })
+        });
 
-    trees++;
 
+        /* ===============================
+           LOGOUT
+        ================================ */
 
-    saveUserData();
+        function logout() {
 
-    updateDashboard();
+            saveUserData();
 
 
-    if(trees >= FOREST_SIZE) {
+            currentUser = null;
 
-        alert(
-            "🎉 Congratulations! You completed your forest!"
-        );
 
-    }
+            document.getElementById("app")
+                .style.display = "none";
 
-    else {
 
-        alert(
-            "🌳 Tree planted successfully!"
-        );
+            document.getElementById("authPage")
+                .style.display = "flex";
 
-    }
 
-}
+            document.getElementById("loginForm")
+                .reset();
 
+        }
 
-/* ===============================
-   RENDER FOREST
-================================ */
+        const API_BASE_URL = "https://natureflex.onrender.com/api";
 
-function renderTrees() {
-
-    const treeContainer =
-        document.getElementById("trees");
-
-
-    treeContainer.innerHTML = "";
-
-
-    let displayTrees =
-        Math.min(trees, 25);
-
-
-    for(let i = 0; i < displayTrees; i++) {
-
-        const tree =
-            document.createElement("span");
-
-        tree.className = "tree";
-
-        tree.innerText = "🌳";
-
-        treeContainer.appendChild(tree);
-
-    }
-
-
-    if(trees === 0) {
-
-        treeContainer.innerHTML = "🌱";
-
-    }
-
-}
-
-
-/* ===============================
-   FOREST
-================================ */
-
-function checkForest() {
-
-    if(trees >= FOREST_SIZE) {
-
-        alert(
-            "🏆 Forest Complete! Real rewards unlocked."
-        );
-
-    }
-
-    else {
-
-        const remaining =
-            FOREST_SIZE - trees;
-
-        alert(
-            `🌱 ${remaining} more trees needed.`
-        );
-
-    }
-
-}
-
-
-/* ===============================
-   REWARDS
-================================ */
-
-function redeemReward() {
-
-    if(trees >= FOREST_SIZE) {
-
-        alert(
-            "🎁 Reward redemption unlocked!"
-        );
-
-    }
-
-    else {
-
-        alert(
-            "🔒 Complete 100 trees to unlock rewards."
-        );
-
-    }
-
-}
-
-
-/* ===============================
-   BMI
-================================ */
-
-function calculateBMI() {
-
-    if(!currentUser) return;
-
-
-    const heightMeters =
-        currentUser.height / 100;
-
-
-    const weight =
-        currentUser.weight;
-
-
-    const bmi =
-        weight /
-        (heightMeters * heightMeters);
-
-
-    document.getElementById("bmiValue")
-    .innerText =
-    bmi.toFixed(1);
-
-
-    let status;
-
-
-    if(bmi < 18.5) {
-
-        status = "Underweight";
-
-    }
-
-    else if(bmi < 25) {
-
-        status = "Healthy Range";
-
-    }
-
-    else if(bmi < 30) {
-
-        status = "Overweight";
-
-    }
-
-    else {
-
-        status = "Obesity Range";
-
-    }
-
-
-    document.getElementById("bmiStatus")
-    .innerText =
-    status;
-
-}
-
-
-/* ===============================
-   SAVE USER
-================================ */
-
-function saveUserData() {
-
-    if(!currentUser) return;
-
-
-    currentUser.steps = steps;
-
-    currentUser.seeds = seeds;
-
-    currentUser.trees = trees;
-
-
-    localStorage.setItem(
-        "natureFlexUser",
-        JSON.stringify(currentUser)
-    );
-
-}
-
-localStorage.setItem(
-    "natureFlexUser",
-    JSON.stringify(currentUser)
-);
-
-fetch("http://localhost:5000/api/signup", {
-    method: "POST",
-
-    headers: {
-        "Content-Type": "application/json"
-    },
-
-    body: JSON.stringify({
-        name: name,
-        email: email,
-        password: password,
-        height: height,
-        weight: weight
-    })
-});
-
-
-/* ===============================
-   LOGOUT
-================================ */
-
-function logout() {
-
-    saveUserData();
-
-
-    currentUser = null;
-
-
-    document.getElementById("app")
-    .style.display = "none";
-
-
-    document.getElementById("authPage")
-    .style.display = "flex";
-
-
-    document.getElementById("loginForm")
-    .reset();
-
-}
-
-</script>
+    </script>
 
 </body>
+
 </html>

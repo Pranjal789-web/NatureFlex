@@ -13,6 +13,12 @@ from dotenv import load_dotenv
 from database import get_connection
 
 
+from flask_cors import CORS
+
+CORS(app, origins=[
+    "https://natureflex.onrender.com"
+])
+
 # =========================
 # CONFIGURATION
 # =========================
